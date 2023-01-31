@@ -1,10 +1,16 @@
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 export default function App() {
+  let [done, setDone] = useState(false);
+
   return (
     <div className="p-20">
       <motion.div
-        onAnimationComplete={() => console.log("parent")}
+        onAnimationComplete={() => {
+          console.log("parent");
+          setDone(true);
+        }}
         animate="move"
         className="mt-8"
       >
@@ -27,6 +33,8 @@ export default function App() {
           onAnimationComplete={() => console.log("red")}
         />
       </motion.div>
+
+      {done && <p>All done!</p>}
     </div>
   );
 }
